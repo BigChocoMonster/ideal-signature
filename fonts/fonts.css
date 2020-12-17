@@ -1,0 +1,8 @@
+/* Webfont: Billion Reach */
+@font-face {
+  font-family: 'BillionReach';
+  src: url('billion_reach/BillionReach.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
