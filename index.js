@@ -17,32 +17,54 @@ window.addEventListener('load', () => {
   }
 });
 
-// Stopping weird form submission page reloads
+// Stop weird form submission page reloads
 document.forms.signature.addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
-// Initialising canvas text
+// Initialise canvas text
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
+let font = 70;
 context.font = '70px BillionReach';
 context.textBaseline = 'middle';
 context.textAlign = 'center';
 
-// Drawing to canvas on font load
-const font = new FontFace(
-  'BillionReach',
-  'url(./fonts/billion_reach/BillionReach.otf)'
-);
-font.load().then(() => {
-  writeToCanvas(document.forms.signature.name.value);
+// Draw to canvas when fonts ready
+document.fonts.ready.then(() => {
+  if (document.fonts.check('1em BillionReach')) {
+    writeToCanvas(document.forms.signature.name.value);
 
-  document.forms.signature.name.addEventListener('input', (event) => {
-    writeToCanvas(event.target.value);
-  });
+    document.forms.signature.name.addEventListener('input', (event) => {
+      writeToCanvas(event.target.value);
+    });
+  } else {
+    writeToCanvas("Sorry, fonts didn't load!");
+  }
 });
 
+// Try to resize font size based on canvas width and write on it
 function writeToCanvas(text) {
+  const canvasText = text || 'I am neu-d';
+  let width = context.measureText(canvasText).width;
+
+  if (width > canvas.width) {
+    font -= 5;
+  } else if (width < canvas.width && font < 70) {
+    font += 5;
+  }
+
+  context.font = `${font}px BillionReach`;
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text || 'I am neu-d', canvas.width / 2, canvas.height / 2);
+  context.fillText(canvasText, canvas.width / 2, canvas.height / 2);
+}
+
+// Create data url from canvas and download a png
+function convertToImage() {
+  const canvasImageData = canvas.toDataURL('image/png');
+  anchor = document.createElement('a');
+
+  anchor.download = 'signature.png';
+  anchor.href = canvasImageData;
+  anchor.click();
 }
