@@ -1,0 +1,23 @@
+#beauty > form {
+  width: 100%;
+  text-align: center;
+}
+
+#beauty > form > * {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--very-dark);
+}
+
+#beauty > form > input {
+  border: none;
+  padding: 12px 24px;
+  width: calc(100% - 48px);
+  border-radius: var(--border-radius);
+  box-shadow: inset 1px 1px 6px var(--dark), inset -1px -1px 6px var(--light);
+}
+
+#beauty > form > input:focus {
+  border: none;
+  outline: none;
+}

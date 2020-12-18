@@ -1,9 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import './fonts/fonts.css';
+@import './styles/fonts.css';
+@import './styles/form.css';
+@import './styles/button.css';
+@import './styles/dropdown.css';
+
+:root {
+  --dark: #d1d9e6;
+  --light: #ffffff;
+  --border-radius: 10px;
+  --very-dark: #5c6070;
+  --background: #ecf0f3;
+  --transition-time: 0.2s;
+}
 
 body {
-  background-color: #ecf0f3;
+  background-color: var(--background);
 }
+
 body * {
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
@@ -13,51 +26,25 @@ body * {
   top: 50%;
   left: 50%;
   width: 60%;
-  height: 60%;
+  height: 80%;
+  display: flex;
   max-width: 500px;
   min-height: 366px;
   padding: 25px 20px;
-  border-radius: 10px;
   position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   transform: translate(-50%, -50%);
-  box-shadow: 2px 2px 5px #cbced1, -2px -2px 5px #ffffff;
-}
-
-#beauty > form {
-  margin-bottom: 20px;
-}
-#beauty > form > * {
-  color: #282a2d;
-}
-#beauty > form > input {
-  border: none;
-  margin-top: 20px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  width: calc(100% - 40px);
-  box-shadow: inset 1px 1px 6px #cbced1, inset -1px -1px 6px #ffffff;
-}
-#beauty > form > input:focus {
-  border: none;
-  outline: none;
+  border-radius: var(--border-radius);
+  box-shadow: 2px 2px 5px var(--dark), -2px -2px 5px var(--light);
 }
 
 #beauty > canvas {
   width: 100%;
-  font-family: 'BillionReach';
-}
-
-#beauty > button {
-  border: none;
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: #ecf0f3;
-  box-shadow: -6px -6px 10px #ffffff, 6px 6px 10px #cbced1;
-}
-#beauty > button:active {
-  box-shadow: inset -4px -4px 8px #ffffff, inset 8px 8px 16px #cbced1;
+  margin-bottom: 20px;
+  border: 0.8px solid var(--dark);
+  border-radius: var(--border-radius);
 }
 
 @media (max-width: 550px) {

@@ -1,0 +1,26 @@
+/* Webfont: Billion Reach */
+@font-face {
+  font-family: 'BillionReach';
+  src: url('../fonts/billion_reach/BillionReach.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Bridgeth */
+@font-face {
+  font-family: 'Bridgeth';
+  src: url('../fonts/bridgeth/Bridgeth.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Fancy Delight */
+@font-face {
+  font-family: 'FancyDelight';
+  src: url('../fonts/fancy_delight/FancyDelight.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}

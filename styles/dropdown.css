@@ -1,0 +1,71 @@
+#beauty > form > #dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#beauty > form > #dropdown > button {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#beauty > form > #dropdown > button::after {
+  width: 10px;
+  height: 10px;
+  content: ' ';
+  display: inline-block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform var(--transition-time);
+  background-image: url(../images/down-arrow.svg);
+}
+
+#beauty > form > #dropdown[data-menu='true'] > button::after {
+  transform: rotate(180deg);
+}
+
+#beauty > form > #dropdown > div {
+  top: 50px;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  border-radius: var(--border-radius);
+  background-color: var(--background);
+  transition: height var(--transition-time);
+  box-shadow: 6px 6px 12px var(--dark), -6px -6px 12px var(--light);
+}
+
+#beauty > form > #dropdown > div > div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#beauty > form > #dropdown > div > div {
+  cursor: pointer;
+  text-align: left;
+  padding: 12px 24px;
+  position: relative;
+}
+
+#beauty > form > #dropdown > div > div::after {
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  right: 24px;
+  content: ' ';
+  border-radius: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  transition: background-color var(--transition-time);
+}
+
+#beauty > form > #dropdown > div > div:hover::after {
+  background-color: var(--dark);
+}
+
+#beauty > form > #dropdown > div > div:active::after {
+  background-color: var(--very-dark);
+}

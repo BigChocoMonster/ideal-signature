@@ -1,0 +1,25 @@
+#beauty button {
+  border: none;
+  cursor: pointer;
+  color: #5c6070;
+  position: relative;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  background-color: var(--background);
+  box-shadow: -8px -4px 8px 0px var(--light), 8px 4px 12px 0px var(--dark);
+}
+
+#beauty button:active::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: ' ';
+  position: absolute;
+  border-radius: var(--border-radius);
+  box-shadow: -4px -2px 4px 0px var(--light), 4px 2px 6px 0px var(--dark);
+}
+
+#beauty button:active {
+  box-shadow: inset -4px -4px 8px #ffffff5a, inset 8px 8px 16px #d1d9e65a;
+}
