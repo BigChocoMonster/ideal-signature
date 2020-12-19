@@ -1,6 +1,8 @@
 #beauty > form {
   width: 100%;
   text-align: center;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 #beauty > form > * {
@@ -9,7 +11,12 @@
   color: var(--very-dark);
 }
 
-#beauty > form > input {
+#beauty > form > label::before,
+#beauty > form > label::after {
+  content: '~';
+  margin: 0 4px;
+}
+#beauty > form > input[type='text'] {
   border: none;
   padding: 12px 24px;
   width: calc(100% - 48px);
@@ -17,7 +24,56 @@
   box-shadow: inset 1px 1px 6px var(--dark), inset -1px -1px 6px var(--light);
 }
 
-#beauty > form > input:focus {
+#beauty > form > input[type='text']:focus {
   border: none;
   outline: none;
+}
+
+#beauty > form > input[type='range'] {
+  height: 0;
+  width: 100%;
+  outline: none;
+  appearance: none;
+  position: relative;
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+  border-top: 1px dashed var(--very-dark);
+}
+
+#beauty > form > input[type='range']::-webkit-slider-thumb {
+  width: 54px;
+  height: 25px;
+  cursor: e-resize;
+  appearance: none;
+}
+
+#beauty > form > input[type='range']::-moz-range-thumb {
+  width: 54px;
+  height: 25px;
+  border: none;
+  cursor: e-resize;
+}
+
+#beauty > form > output {
+  width: 54px;
+  display: flex;
+  bottom: -12.5px;
+  font-size: 12px;
+  padding: 5px 10px;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  pointer-events: none;
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+  box-shadow: 6px 6px 12px var(--dark), -6px -6px 12px var(--light);
+  justify-content: space-between;
+}
+
+#beauty > form > output::before {
+  content: ' ';
+  width: 10px;
+  height: 10px;
+  background-size: contain;
+  background-image: url(../images/drag.svg);
 }

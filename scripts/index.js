@@ -1,4 +1,4 @@
-import { fontFamilies, fontSize } from './constants.js';
+import { fontFamilies, fontSize, fontSizeLimits } from './constants.js';
 
 // Register service worker
 window.addEventListener('load', () => {
@@ -30,7 +30,8 @@ const context = canvas.getContext('2d');
 context.textBaseline = 'middle';
 context.textAlign = 'center';
 
-let fontFamily = fontFamilies[0];
+let currentFontFamily = fontFamilies[0];
+let currentFontSize = fontSize;
 
 // Load all the fonts
 for (let font of fontFamilies) {
@@ -44,7 +45,26 @@ document.fonts.ready.then(() => {
   document.forms.signature.name.addEventListener('input', (event) => {
     writeToCanvas(event.target.value);
   });
+
+  writeFontValue(document.forms.signature.fontsize.value);
+
+  document.forms.signature.fontsize.addEventListener('input', (event) => {
+    currentFontSize = event.target.value;
+    writeToCanvas(document.forms.signature.name.value);
+
+    writeFontValue(currentFontSize);
+  });
 });
+
+// Calculate font percentage and write to output
+function writeFontValue(currentValue) {
+  let [minFontSize, maxFontSize] = fontSizeLimits;
+  const ratio = (currentValue - minFontSize) / (maxFontSize - minFontSize);
+  const percentage = ratio * 100;
+  document.forms.signature.fontvalue.innerText = `${percentage.toFixed(0)} %`;
+
+  document.forms.signature.fontvalue.style.left = `calc(${ratio} * (100% - 74px))`;
+}
 
 // Write to canvas
 function writeToCanvas(text) {
@@ -55,9 +75,10 @@ function writeToCanvas(text) {
 
 // Set canvas font settings
 function setContextFont() {
-  context.font = `${fontSize}px ${fontFamily}`;
+  context.font = `${currentFontSize}px ${currentFontFamily}`;
 }
 
+// All font-family work
 window.addEventListener('load', () => {
   let isMenuOpen = false;
 
@@ -83,7 +104,7 @@ window.addEventListener('load', () => {
       button.innerText = child.innerText;
       button.click();
 
-      fontFamily = child.innerText.replace(/\s/g, '');
+      currentFontFamily = child.innerText.replace(/\s/g, '');
       writeToCanvas(document.forms.signature.name.value);
     });
   }

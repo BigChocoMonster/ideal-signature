@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles/styles.css"/>
   <title>Ideal Waddle</title>
 </head>
 <body>
   <div id="beauty">
-    <form name="signature">
-      <label>~ Name here to create a fant-ass-tic signature ~</label>
-      <input name='name' placeholder="I am neu-d" />
-      <label>~ Pick your awesome style ~</label>
-      <div id='dropdown' data-menu='false'>
+    <form name="signature" autocomplete="off">
+      <label>Name here to create a fant-ass-tic signature</label>
+      <input name="name" type="text" placeholder="I am neu-d" />
+      <label>Pick your awesome style</label>
+      <div id="dropdown" data-menu="false">
         <button>Billion Reach</button>
         <div>
           <div>Billion Reach</div>
@@ -20,10 +20,14 @@
           <div>Fancy Delight</div>
         </div>
       </div>
+      <label>Slide this baby to get the size you want</label>
+      <input name="fontsize" type="range" min="10" max="100" value="70" />
+      <output name="fontvalue" for="fontsize"></output>
     </form>
     <canvas></canvas>
     <button onclick="convertToImage()">Download</button>
   </div>
-  <script src='index.js' type="module"></script>
+  <script src="scripts/index.js" type="module"></script>
+  <script src="scripts/signature-downloader.js"></script>
 </body>
 </html>
